@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Brug FishGoo spreadsheet til at sammenligne produktlinks, vælge størrelse og læse QC-billeder. Se varekategorier og lav et fragtoverslag til Danmark.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="da_DK">
+  <meta property="og:title" content="FishGoo spreadsheet | Dansk guide til links, mål og QC">
+  <meta property="og:description" content="Brug FishGoo spreadsheet til at sammenligne produktlinks, vælge størrelse og læse QC-billeder. Se varekategorier og lav et fragtoverslag til Danmark.">
+  <title>FishGoo spreadsheet | Dansk guide til links, mål og QC</title>
+  <!--
+    Filnavn: index.html
+    Redaktionsnotat: Googles resultatside kunne ikke åbnes direkte. Ti forskellige domæner
+    fra et websøgeindeks blev gennemgået som alternativ. Rækkefølgen er ikke en Google-rangliste.
+    Katalog, kategorier og QC: fishgoofind.net, fishgoo.info, fishgoo.org, fishgoosheet.org.
+    Produktlinks og varekontrol: fishgooreps.com, findhaul.com, fishgooing.com.
+    Købsproces, varekilder og fragt: fishgoo.net, fishgoobuy.com, htv4.yinaojiyi.com.
+    Sekundære søgeord: FishGoo produktlinks, FishGoo størrelsesguide, FishGoo QC-billeder,
+    FishGoo fragt til Danmark.
+    Longtail-emner: FishGoo spreadsheet til begyndere, produktlinks til sneakers, Weidian-link,
+    Taobao-link, 1688-produktlink, link til den valgte variant, tjek af varenummer,
+    størrelsesguide til sneakers, indersålens længde i cm, størrelsesskema til hættetrøjer,
+    brystbredde målt fladt, ærmelængde på jakker, indvendig benlængde, kasket med justerbar rem,
+    QC-billeder fra lageret, QC-fotos af syninger, foto af størrelsesmærkat, kontrol af sålen,
+    mål på en skulderrem, sammenligning af smykkelængde, fragt fra Kina til Danmark,
+    fragt efter pakkens mål, beregning af pakket vægt, samlet pris i DKK, transportørens gebyrer.
+  -->
+  <style>
+    :root{color-scheme:light;--paper:#faf5ee;--ink:#271b25;--muted:#655562;--line:#dfcfcf;--plum:#4e2545;--rose:#f6ded8;--white:#fffdfa}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.6 system-ui,sans-serif}
+    .wrap{width:min(70rem,calc(100% - 2rem));margin-inline:auto}
+    a{color:var(--plum);text-underline-offset:.2em}
+    :focus-visible{outline:3px solid #9a3f52;outline-offset:4px}
+    .top{padding-block:.8rem;border-bottom:1px solid var(--line)}
+    .top a{font-weight:850;letter-spacing:.11em}
+    .hero{display:grid;grid-template-columns:1.35fr 1fr;align-items:stretch;margin-top:1.35rem;background:var(--rose);border-radius:1rem;overflow:hidden}
+    .intro{padding:clamp(1.25rem,5vw,3.5rem)}
+    .tag{color:var(--plum);font-size:.82rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    h1,h2,h3,p,figure{margin:0}
+    h1,h2{font-family:Georgia,serif;line-height:1.08}
+    h1{font-size:clamp(2.3rem,5.9vw,5.1rem);overflow-wrap:anywhere}
+    h2{font-size:clamp(1.8rem,3.7vw,2.7rem)}
+    h3{font-size:1.15rem;line-height:1.35}
+    p+p,h1+p,h2+p,h3+p{margin-top:.7rem}
+    .cta{display:inline-block;margin-top:1.25rem;padding:.65rem 1rem;border-radius:.4rem;background:var(--plum);color:white;font-weight:750}
+    .hero img{display:block;width:100%;height:100%;min-height:14rem;max-height:29rem;object-fit:contain;background:#fff}
+    section{margin-block:2.25rem}
+    .categories{list-style:none;padding:0;margin:1rem 0 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.55rem}
+    .categories a{display:flex;align-items:center;height:100%;min-height:3rem;padding:.55rem .7rem;background:var(--white);border:1px solid var(--line);border-radius:.5rem;font-weight:700}
+    .gallery{margin-top:1rem;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.75rem}
+    .gallery figure{background:var(--white);border:1px solid var(--line);border-radius:.6rem;overflow:hidden}
+    .gallery img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;background:#fff}
+    figcaption{padding:.55rem .7rem;font-size:.88rem;color:var(--muted)}
+    .stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+    article{background:var(--white);border-left:4px solid #a66070;padding:1rem 1.2rem}
+    details{border-bottom:1px solid var(--line);padding:.75rem 0}
+    summary{cursor:pointer;font-weight:760}
+    details p{margin:.45rem 0 0;max-width:66ch}
+    footer{padding:1.2rem 0 2rem;border-top:1px solid var(--line);color:var(--muted)}
+    @media(max-width:760px){.categories,.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:540px){.hero,.stories{grid-template-columns:1fr}.hero img{height:13rem;min-height:0}.categories,.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "inLanguage":"da",
+    "name":"FishGoo spreadsheet | Dansk guide til links, mål og QC",
+    "description":"Brug FishGoo spreadsheet til at sammenligne produktlinks, vælge størrelse og læse QC-billeder. Se varekategorier og lav et fragtoverslag til Danmark.",
+    "mainEntity":[
+      {"@type":"Question","name":"Hvad er et FishGoo spreadsheet?","acceptedAnswer":{"@type":"Answer","text":"Et FishGoo spreadsheet er en oversigt over produktlinks, som kan bruges til at sammenligne varer, varianter og tilgængelige QC-billeder."}},
+      {"@type":"Question","name":"Hvordan tjekker jeg et Weidian-link eller et Taobao-link?","acceptedAnswer":{"@type":"Answer","text":"Åbn den oprindelige vareannonce, og se efter den ønskede farve og størrelse. Notér varenummer og dato, så du kan genkende varianten, hvis annoncen ændres."}},
+      {"@type":"Question","name":"Hvad kan QC-billeder fortælle mig?","acceptedAnswer":{"@type":"Answer","text":"QC-billeder kan vise synlige detaljer som syninger, mål og mærkater på den fotograferede vare. Brug billeder af den konkrete variant. Billeder alene kan ikke fastslå ægthed."}},
+      {"@type":"Question","name":"Hvordan sammenligner jeg fragt til Danmark?","acceptedAnswer":{"@type":"Answer","text":"Brug en pris for den pakkede vægt og pakkens mål. Regn varepris, fragt, vekselkurs og eventuelle afgifter og gebyrer med, når du sammenligner totalen i danske kroner."}},
+      {"@type":"Question","name":"Er guiden officiel, og kan jeg købe de viste varer her?","acceptedAnswer":{"@type":"Answer","text":"Dette er en uafhængig guide. Billederne er stilreferencer, og kategorioversigten fører til CAFANS. Tjek det aktuelle udvalg hos CAFANS."}}
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/qsipf/">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap"><a href="https://www.cafans.com">CAFANS</a></div>
+  </header>
+  <main class="wrap">
+    <div class="hero">
+      <div class="intro">
+        <p class="tag">Dansk indkøbsguide</p>
+        <h1>FishGoo spreadsheet</h1>
+        <p>Find den rigtige variant, før du sammenligner prisen. Brug denne guide til at læse produktlinks, tjekke mål og vurdere QC-billeder, når du leder efter sneakers, tøj eller tilbehør.</p>
+        <a class="cta" href="https://www.cafans.com">Se udvalget hos CAFANS</a>
+      </div>
+      <img src="https://nikeclprod.vtexassets.com/arquivos/ids/160793/CW2288_111_A_PREM.jpg?v=637654399803530000" width="640" height="640" alt="Hvid Nike Air Force 1 ’07 med hvid sål set fra siden" fetchpriority="high" loading="eager">
+    </div>
+
+    <section aria-labelledby="kategorier">
+      <h2 id="kategorier">Gå direkte til en varekategori</h2>
+      <nav aria-label="CAFANS-varekategorier">
+        <ul class="categories">
+          <li><a href="https://cafans.com/category-911-Shoes.html">Sko</a></li>
+          <li><a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">Hættetrøjer og sweatre</a></li>
+          <li><a href="https://cafans.com/category-913-T-Shirts.html">T-shirts</a></li>
+          <li><a href="https://cafans.com/category-914-Jackets.html">Jakker</a></li>
+          <li><a href="https://cafans.com/category-915-Pants%2FShorts.html">Bukser og shorts</a></li>
+          <li><a href="https://cafans.com/category-916-Headwear.html">Kasketter og huer</a></li>
+          <li><a href="https://cafans.com/category-917-Sets.html">Sæt</a></li>
+          <li><a href="https://cafans.com/category-918-underwear%2Funderpants.html">Undertøj</a></li>
+          <li><a href="https://cafans.com/category-919-Jersey.html">Sportstrøjer</a></li>
+          <li><a href="https://cafans.com/category-920-Accessories.html">Tilbehør</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <section aria-labelledby="artikler">
+      <h2 id="artikler">Fire tjek, før du bestiller</h2>
+      <div class="stories">
+        <article>
+          <h3>Produktlinks: gem den præcise variant</h3>
+          <p>Hvis du bruger et Weidian-, Taobao- eller 1688-produktlink, så gem linket sammen med varenummer, sælger, farve og størrelse. Skriv også datoen for dit tjek. Hvis en annonce har flere modeller, kan det samme link føre til en anden variant end den, du først så.</p>
+        </article>
+        <article>
+          <h3>Størrelsesguide til sneakers og tøj</h3>
+          <p>Sammenlign indersålens længde i centimeter med et par sko, der passer dig. Tjek brystbredden målt fladt på en hættetrøje og ærmelængden på en jakke. For bukser er indvendig benlængde og taljevidde gode mål at sammenligne med et par, du bruger.</p>
+        </article>
+        <article>
+          <h3>QC-billeder: bed om det foto, du mangler</h3>
+          <p>Ved kontrol af sko kan et billede af sålen og et foto af størrelsesmærkatet afklare, hvilken model og størrelse du ser. Se efter syninger ved lynlåsen på en jakke, og bed om et foto med målebånd, hvis du vil tjekke en skulderrems eller halskædes længde.</p>
+        </article>
+        <article>
+          <h3>Fragt fra Kina til Danmark: regn i DKK</h3>
+          <p>Notér varepris, eventuel indenrigsfragt og prisen for den internationale forsendelse. Bed om pakkens mål og vægt, og tjek, hvilket af dem transportøren bruger til at beregne fragten. Læg eventuelle afgifter og transportørens gebyrer til, før du sammenligner den samlede pris i DKK.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="billeder">
+      <h2 id="billeder">Detaljer at kigge efter</h2>
+      <p>Mærkebillederne er stilreferencer. Brug produktannoncen til at tjekke udvalg og variant.</p>
+      <div class="gallery">
+        <figure>
+          <img src="https://www.basketballshop24.de/media/00/b9/d8/1682068010/746d1a343abcecb8d43cc3f90e3ab3fe.jpg" width="640" height="640" alt="Nike Sportswear Club Fleece-hættetrøje med kængurulomme" loading="lazy" decoding="async">
+          <figcaption>Nike · Sammenlign trøjens brystbredde</figcaption>
+        </figure>
+        <figure>
+          <img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1751298339/838745_3HBC4_2600_001_100_0000_Light.jpg" width="640" height="640" alt="Beige og brun Gucci-kasket med GG-mønster" loading="lazy" decoding="async">
+          <figcaption>Gucci · Tjek lukning og hovedmål</figcaption>
+        </figure>
+        <figure>
+          <img src="https://tw.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-neverfull-mm--M46975_PM1_Side%20view.jpg" width="640" height="640" alt="Brun Louis Vuitton Neverfull MM-taske med monogram set fra siden" loading="lazy" decoding="async">
+          <figcaption>Louis Vuitton · Tjek taskens mål</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.hermes.com/is/image/hermesproduct/%E3%82%AB%E3%83%AC-90-%E3%80%8A%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AF%E9%9E%8D%E3%81%AE%E4%B8%AD%E3%81%AB%E3%80%8B--004204S%2005-flat-wm-3-0-0-1000-1000_g.jpg" width="640" height="640" alt="Kvadratisk Hermès Carré 90-silketørklæde med mønster" loading="lazy" decoding="async">
+          <figcaption>Hermès · Se stof og kantafslutning</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.christiandior.cn/is/image/diorprod/LOOK_F_25_2_LOOK_805_E12?%24lookDefault_GH-GHC%24=&amp;bfc=on&amp;crop=568%2C0%2C1864%2C2000&amp;hei=2000&amp;qlt=85&amp;scale=1&amp;wid=1850" width="640" height="640" alt="Dior Petit CD-halskæde med dekorative krystaller" loading="lazy" decoding="async">
+          <figcaption>Dior · Sammenlign kædens længde</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <details>
+        <summary>Hvad er et FishGoo spreadsheet?</summary>
+        <p>Et FishGoo spreadsheet er en oversigt over produktlinks, som kan bruges til at sammenligne varer, varianter og tilgængelige QC-billeder.</p>
+      </details>
+      <details>
+        <summary>Hvordan tjekker jeg et Weidian-link eller et Taobao-link?</summary>
+        <p>Åbn den oprindelige vareannonce, og se efter den ønskede farve og størrelse. Notér varenummer og dato, så du kan genkende varianten, hvis annoncen ændres.</p>
+      </details>
+      <details>
+        <summary>Hvad kan QC-billeder fortælle mig?</summary>
+        <p>QC-billeder kan vise synlige detaljer som syninger, mål og mærkater på den fotograferede vare. Brug billeder af den konkrete variant. Billeder alene kan ikke fastslå ægthed.</p>
+      </details>
+      <details>
+        <summary>Hvordan sammenligner jeg fragt til Danmark?</summary>
+        <p>Brug en pris for den pakkede vægt og pakkens mål. Regn varepris, fragt, vekselkurs og eventuelle afgifter og gebyrer med, når du sammenligner totalen i danske kroner.</p>
+      </details>
+      <details>
+        <summary>Er guiden officiel, og kan jeg købe de viste varer her?</summary>
+        <p>Dette er en uafhængig guide. Billederne er stilreferencer, og kategorioversigten fører til CAFANS. Tjek det aktuelle udvalg hos CAFANS.</p>
+      </details>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap"><p>Uafhængig indkøbsguide. <a href="https://www.cafans.com">Gå til CAFANS</a></p></div>
+  </footer>
+</body>
+</html>
